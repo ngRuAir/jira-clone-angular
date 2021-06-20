@@ -10,5 +10,5 @@
 </nz-select>
 <ng-template #selectedReporterTmpl
              let-selected>
-    <j-user [user]="getUser(selected.nzValue)"></j-user>
+    <j-user [user]="users | arrayIdFind : selected.nzValue"></j-user>
 </ng-template>
