@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { IssueType, JIssue, IssueStatus, IssuePriority } from '@trungk18/interface/issue';
-import { quillConfiguration } from '@trungk18/project/config/editor';
-import { NzModalRef } from 'ng-zorro-antd/modal';
-import { ProjectService } from '@trungk18/project/state/project/project.service';
-import { IssueUtil } from '@trungk18/project/utils/issue';
-import { ProjectQuery } from '@trungk18/project/state/project/project.query';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { Observable } from 'rxjs';
-import { JUser } from '@trungk18/interface/user';
-import { tap } from 'rxjs/operators';
-import { NoWhitespaceValidator } from '@trungk18/core/validators/no-whitespace.validator';
-import { DateUtil } from '@trungk18/project/utils/date';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {IssuePriority, IssueStatus, IssueType, JIssue} from '@trungk18/interface/issue';
+import {quillConfiguration} from '@trungk18/project/config/editor';
+import {NzModalRef} from 'ng-zorro-antd/modal';
+import {ProjectService} from '@trungk18/project/state/project/project.service';
+import {IssueUtil} from '@trungk18/project/utils/issue';
+import {ProjectQuery} from '@trungk18/project/state/project/project.query';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
+import {Observable} from 'rxjs';
+import {JUser} from '@trungk18/interface/user';
+import {tap} from 'rxjs/operators';
+import {NoWhitespaceValidator} from '@trungk18/core/validators/no-whitespace.validator';
+import {DateUtil} from '@trungk18/project/utils/date';
 
 @Component({
   selector: 'add-issue-modal',
   templateUrl: './add-issue-modal.component.html',
-  styleUrls: ['./add-issue-modal.component.scss']
+  styleUrls: ['./add-issue-modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 @UntilDestroy()
 export class AddIssueModalComponent implements OnInit {
