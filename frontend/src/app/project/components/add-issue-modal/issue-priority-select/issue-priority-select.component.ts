@@ -1,24 +1,28 @@
-import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { IssuePriorityIcon } from '@trungk18/interface/issue-priority-icon';
-import { IssueUtil } from '@trungk18/project/utils/issue';
-import { IssuePriority } from '@trungk18/interface/issue';
-import { ProjectConst } from '@trungk18/project/config/const';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {IssuePriorityIcon} from '@trungk18/interface/issue-priority-icon';
+import {ProjectConst} from '@trungk18/project/config/const';
+
+type IssuePriorityMap = { [key: string]: IssuePriorityIcon };
 
 @Component({
   selector: 'issue-priority-select',
   templateUrl: './issue-priority-select.component.html',
-  styleUrls: ['./issue-priority-select.component.scss']
+  styleUrls: ['./issue-priority-select.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
+// TODO implement ControlValueAccessor
 export class IssuePrioritySelectComponent {
   @Input() control: FormControl;
-  priorities: IssuePriorityIcon[];
+
+  public priorities: IssuePriorityIcon[];
+  public prioritiesMap: IssuePriorityMap = {};
 
   constructor() {
     this.priorities = ProjectConst.PrioritiesWithIcon;
-  }
 
-  getPriorityIcon(priority: IssuePriority) {
-    return IssueUtil.getIssuePriorityIcon(priority);
+    ProjectConst.PrioritiesWithIcon.forEach(p => {
+      this.prioritiesMap[p.value] = p;
+    });
   }
 }

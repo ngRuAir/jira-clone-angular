@@ -16,8 +16,8 @@
 <ng-template #defaultTemplate
              let-selected>
     <div class="flex items-center">
-        <svg-icon [name]="getPriorityIcon(selected.nzValue)?.icon"
-                  [style.color]="getPriorityIcon(selected.nzValue)?.color"
+        <svg-icon [name]="priorities[selected.nzValue]?.icon"
+                  [style.color]="priorities[selected.nzValue]?.color"
                   [size]="20">
         </svg-icon>
         <span class="ml-3 font-semibold uppercase text-textMedium text-13">{{ selected.nzValue }}</span>
