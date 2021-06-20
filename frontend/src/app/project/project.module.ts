@@ -34,6 +34,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
 import { TargetClickDirective } from '@trungk18/core/directives/target-click.directive';
+import {ArrayIdFindModule} from "@trungk18/core/pipes/array-id-find.module";
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { TargetClickDirective } from '@trungk18/core/directives/target-click.dir
     ReactiveFormsModule,
     JiraControlModule,
     ContentLoaderModule,
-    QuillModule
+    QuillModule,
+    ArrayIdFindModule
   ]
 })
 export class ProjectModule {}
