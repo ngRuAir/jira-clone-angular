@@ -6,11 +6,6 @@ describe('InputComponent', () => {
   beforeEach(() => {
     component = new InputComponent();
   });
-
-  it('should be able to init', () => {
-    component.ngOnInit();
-    expect(component.control).toBeTruthy();
-  });
   it('should be able to get icon size', () => {
     expect(component.iconContainerWidth).toEqual(32);
   });
@@ -18,9 +13,7 @@ describe('InputComponent', () => {
     expect(typeof component.isShowClearButton).toEqual('undefined');
   });
   it('should be able to clear control', () => {
-    component.ngOnInit();
-    spyOn(component.control, 'patchValue').and.callThrough();
     component.clear();
-    expect(component.control.patchValue).toHaveBeenCalled();
+    expect(component.value).toHaveBeenCalled();
   });
 });
