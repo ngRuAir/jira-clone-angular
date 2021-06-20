@@ -33,10 +33,12 @@ import { FullIssueDetailComponent } from './pages/full-issue-detail/full-issue-d
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ProjectRoutingModule } from './project-routing.module';
 import { ProjectComponent } from './project.component';
+import { TargetClickDirective } from '@trungk18/core/directives/target-click.directive';
 
 @NgModule({
   declarations: [
     AutofocusDirective,
+    TargetClickDirective,
     ...NavigationComponents,
     ...BoardPageComponents,
     ...IssueUtilComponents,
