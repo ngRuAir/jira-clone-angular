@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'j-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
   @Input() type = 'button';
@@ -13,7 +14,4 @@ export class ButtonComponent {
   @Input() isWorking: boolean;
   @Input() isActive: boolean;
   @Input() disabled: boolean;
-
-  constructor() {}
-
 }
