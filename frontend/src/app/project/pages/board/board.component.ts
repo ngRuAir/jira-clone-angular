@@ -1,17 +1,11 @@
-import { Component } from '@angular/core';
-import { GoogleAnalyticsService } from '@trungk18/core/services/google-analytics.service';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
   selector: 'board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: ['./board.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BoardComponent {
   breadcrumbs: string[] = ['Projects', 'Angular Jira Clone', 'Kanban Board'];
-
-  constructor(private _googleAnalytics: GoogleAnalyticsService) {}
-
-  sendTwitterEventButton() {
-    this._googleAnalytics.sendEvent('Share Twitter', 'button');
-  }
 }
