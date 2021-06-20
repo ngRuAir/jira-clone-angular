@@ -9,11 +9,4 @@ export class SvgIconComponent {
   @Input() name: string;
   @Input() size = 16;
   @Input() fill = 'currentColor';
-  window: any = window;
-
-  constructor() {}
-
-  get iconUrl() {
-    return `${this.window.location.href}#${this.name}`;
-  }
 }

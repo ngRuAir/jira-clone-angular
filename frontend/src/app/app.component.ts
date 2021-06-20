@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
     public projectQuery: ProjectQuery,
     private _cdr: ChangeDetectorRef,
     private _projectService: ProjectService,
-    private _googleAnalytics: GoogleAnalyticsService
+    private _googleAnalytics: GoogleAnalyticsService,
   ) {
     this._projectService.setLoading(true);
 
