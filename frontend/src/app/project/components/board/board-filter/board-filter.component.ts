@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FilterQuery } from '@trungk18/project/state/filter/filter.query';
-import { FilterService } from '@trungk18/project/state/filter/filter.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { ProjectQuery } from '@trungk18/project/state/project/project.query';
-import { JUser } from '@trungk18/interface/user';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {UntilDestroy, untilDestroyed} from '@ngneat/until-destroy';
+import {FilterQuery} from '@trungk18/project/state/filter/filter.query';
+import {FilterService} from '@trungk18/project/state/filter/filter.service';
+import {distinctUntilChanged} from 'rxjs/operators';
+import {ProjectQuery} from '@trungk18/project/state/project/project.query';
+import {JUser} from '@trungk18/interface/user';
 
 @Component({
   selector: 'board-filter',
   templateUrl: './board-filter.component.html',
-  styleUrls: ['./board-filter.component.scss']
+  styleUrls: ['./board-filter.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 @UntilDestroy()
 export class BoardFilterComponent implements OnInit {
@@ -27,7 +28,7 @@ export class BoardFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchControl.valueChanges
-      .pipe(debounceTime(100), distinctUntilChanged(), untilDestroyed(this))
+      .pipe(distinctUntilChanged(), untilDestroyed(this))
       .subscribe((term) => {
         this.filterService.updateSearchTerm(term);
       });
